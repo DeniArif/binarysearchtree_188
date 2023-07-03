@@ -1,59 +1,51 @@
 #include <iostream>
-#include <string>
+#include<string>
 using namespace std;
 
-class Node
-{
+class Node {
 public:
 	string info;
 	Node* leftchild;
 	Node* rightchild;
 
-	// Constructor for the node class
-	Node(string i, Node * 1, Node* r)
-	{
+	//Constructur for the node class
+	Node(string i, Node* l, Node* r) {
 		info = i;
-		leftchild = 1;
+		leftchild = l;
 		rightchild = r;
 	}
 };
 
-class BinaryTree
-{
+class BinaryTree {
 public:
 	Node* ROOT;
-
-	BinaryTree()
-	{
-		ROOT = NULL; // initializing ROOT to null
+	BinaryTree() {
+		ROOT = NULL; //Initializing ROOT to null
 	}
 
-	void insert(string element) //Insert a node in the binary search tree
+	void insert(string element) //insert a node in the binary search tree
 	{
-		Node* newNode = new Node(element, NULL, NULL); // ALLocate memory for the new node
-		newNode->info = element; //Assign value to the data field of the new node
-		newNode->leftchild = NULL;//Make the left child of the new node point to NULL
-		newNode->rightchild = NULL;//Make the right child of the new node point to NULL
+		Node* newNode = new Node(element, NULL, NULL); //Alocate memory for the nenw node
+		newNode->info = element; //	Assign value to the data fied of the new node
+		newNode->leftchild = NULL; //Make the left child of the new node point to null
+		newNode->rightchild = NULL; //Make the right child of the new node point to NULL
 
 		Node* parent = NULL;
 		Node* currentNode = NULL;
-		search(element, parent, currentNode);//Locate the node will be the parent of the node to be inserted
+		search(element, parent, currentNode); //Locaete the node which will be the parent of the node to be insserted
 
-		if (parent == NULL) //If the parent is NULL (Tree is empty)
+		if (parent == NULL)// if hte parents is NULL (Tree is empty)
 		{
 			ROOT = newNode; //Mark the new node as ROOT
-			return; //Exit
+			return; //EXIT
 		}
 
-		if (element < parent->info) // If the value in the data field of the new node is less than that of the parent
+		if (element < parent->info)//if the value in the data field of the new node is less than that of the parent
 		{
-			parent->leftchild = newNode;//Make the left child of the parent point to the new node
+			parent->leftchild = newNode;//make the left child of the parent point to the new node
 		}
-
-		else if (element > parent->info) //if the value in the data field of the new node is greater than that of the parent
+		else if (element > parent->info) //if the value in the data field of the new node is greather than that of the parent
 		{
-
+			parent->rightchild = newNode;//make the right child of the parent point to the new node
 		}
-
 	}
-};
